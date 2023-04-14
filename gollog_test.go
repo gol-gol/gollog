@@ -1,7 +1,6 @@
 package gollog
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -79,10 +78,8 @@ func TestPersist(t *testing.T) {
 		t.Fatal(errRead)
 	}
 	received := strings.TrimSpace(string(data))
-	expected := fmt.Sprintf("%s\n", SampleDebugMsg)
-	expected = strings.TrimSpace(expected)
-	if received == expected {
-		t.Fatalf("FAILED: to persist required logs.\nRecieved:\n%s\nExpected:\n%s", received, expected)
+	if len(received) == 0 {
+		t.Fatal("FAILED to persist required logs.")
 	}
 
 	fyl.Close()

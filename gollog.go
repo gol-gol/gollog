@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"time"
 )
 
 const DefaultLogFile = "default-gollog.log"
@@ -73,11 +74,12 @@ func LogIt() {
 }
 
 func processMsg(m GollogMsg) {
+	samay := time.Now().Format(time.UnixDate)
+	lyn := fmt.Sprintf("%s @%s: %v\n", samay, m.Level, m.Msg)
 	if Display {
-		fmt.Printf("[%v] %v\n", m.Level, m.Msg)
+		fmt.Println(lyn)
 	}
 	if Persist {
-		lyn := fmt.Sprintf("%v\n", m.Msg)
 		n, err := io.WriteString(LogFileHandler, lyn)
 		if err != nil {
 			fmt.Println(n, err)
