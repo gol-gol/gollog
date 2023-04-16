@@ -22,11 +22,15 @@
 * `Panicf(msgTmpl string, param ...interface{})`
 
 
-## Public Variables available to be tuned
+#### Public Variables available to be tuned
 
 * `Level` ("Debug", "Info", "Warn", "Error", "Panic")
 * `SaveAt` (if to be persisted, log file path)
 * `Display` (if to be printed on display, set to true)
 * `Persist` (if to be persisted, set to true)
+
+### Wrappers
+
+* `SetGinLog(*gin.Engine)` to be used for [Gin](https://github.com/gin-gonic/gin) to log json details for requests
 
 ---
